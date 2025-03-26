@@ -17,5 +17,6 @@ model Match {
   date       DateTime
   emblem     String
 
+  @@unique([opponent, date])
   @@map("match")
 }

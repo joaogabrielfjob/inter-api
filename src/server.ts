@@ -1,11 +1,14 @@
-import { fastify } from 'fastify';
-import cors from '@fastify/cors';
+import { fastify } from 'fastify'
+import cors from '@fastify/cors'
 
-const server = fastify();
+import { matchRoutes } from './infra/http/match_routes.js'
 
-server.register(cors, { origin: true });
+const server = fastify()
 
-const port =  Number(process.env.PORT ?? 7777);
+server.register(cors, { origin: true })
+server.register(matchRoutes)
+
+const port =  Number(process.env.PORT ?? 7777)
 
 server
   .listen({
@@ -14,4 +17,4 @@ server
   })
   .then(() => {
     console.log('🚀 HTTP server running')
-  });
+  })
