@@ -5,7 +5,7 @@ import { matchRoutes } from './infra/http/match_routes.js'
 
 const server = fastify()
 
-server.register(cors, { origin: true })
+server.register(cors, { origin: process.env.WEB_URL })
 server.register(matchRoutes)
 
 const port =  Number(process.env.PORT ?? 7777)
