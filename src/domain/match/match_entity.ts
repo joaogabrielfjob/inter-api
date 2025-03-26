@@ -19,5 +19,13 @@ export class Match {
     league,
     date,
     emblem
-  }: Match) { }
+  }: Match) {
+    this.id = id
+    this.identifier = identifier
+    this.opponent = opponent
+    this.location = location
+    this.league = league
+    this.date = date
+    this.emblem = emblem
+  }
 }

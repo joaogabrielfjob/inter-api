@@ -33,4 +33,16 @@ export class IMatchRepository implements MatchRepository {
       return null
     }
   }
+
+  async all(): Promise<Match[]> {
+    try {
+      const result = await this.prisma.match.findMany({ orderBy: { date: 'asc' } })
+
+      return result.map((match) => new Match(match))
+    } catch(exception) {
+      console.error('IMatchRepository - all - Exception', exception)
+
+      return []
+    }
+  }
 }
