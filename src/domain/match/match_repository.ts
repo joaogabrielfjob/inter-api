@@ -5,4 +5,6 @@ export interface MatchRepository {
   createMany(matches: Match[]): Promise<number | nil>
 
   all(): Promise<Match[]>
+
+  deleteAll(): Promise<void>
 }

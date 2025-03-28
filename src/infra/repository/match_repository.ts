@@ -31,4 +31,12 @@ export class IMatchRepository implements MatchRepository {
       return []
     }
   }
+
+  async deleteAll(): Promise<void> {
+    try {
+      await this.prisma.match.deleteMany({})
+    } catch(exception) {
+      console.error('IMatchRepository - deleteAll - Exception', exception)
+    }
+  }
 }

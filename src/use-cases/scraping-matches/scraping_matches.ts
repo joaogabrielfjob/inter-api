@@ -66,6 +66,8 @@ export class ScrapingMatches {
   }
 
   async persist(scraped: Scraped[]) {
+    this.deletePreviousMatches()
+
     const matches: Match[] = []
 
     for (const input of scraped) {
@@ -87,4 +89,11 @@ export class ScrapingMatches {
 
     return output ?? 0
   }
+
+  /* 
+    remove previously stored matches 
+    to avoid duplication or inconsistencies 
+    due to updates in match data
+  */
+  deletePreviousMatches = async () => await this.repo.deleteAll()
 }
