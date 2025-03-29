@@ -1,0 +1,15 @@
+model Result {
+  id Int @id @default(autoincrement())
+
+  identifier    String   @unique
+  opponent      String
+  location      String
+  league        String
+  date          DateTime
+  emblem        String
+  interGoals    Int
+  opponentGoals Int
+
+  @@unique([opponent, date])
+  @@map("result")
+}
