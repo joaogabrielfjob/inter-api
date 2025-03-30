@@ -9,7 +9,8 @@ export class IResultRepository implements ResultRepository {
   async createMany(results: Result[]): Promise<number | nil> {
     try {
       const result = await this.prisma.result.createMany({
-        data: results
+        data: results,
+        skipDuplicates: true
       })
 
       return result.count
