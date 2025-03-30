@@ -30,8 +30,10 @@ export class ScrapingResults {
         const league = result.querySelector<HTMLElement>('div.match__lg_card--league')!.innerText
         const emblem = result.querySelector<HTMLImageElement>(`div.match__lg_card--${emblemSufix}-logo img`)!.src
   
-        const dateElement = result.querySelector<HTMLElement>('div.match__lg_card--date')!
-        const dateText = dateElement.childNodes.item(0).textContent!.trim().split(', ')[1]
+        const dateElement = result.querySelector<HTMLElement>('div.match__lg_card--date')!.childNodes.item(0).textContent!
+        const dateText = dateElement === 'ontem' 
+          ? new Date(new Date().setDate(new Date().getDate() - 1)).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })
+          : dateElement.trim().split(', ')[1]
         const [day, month] = dateText.split('/')
   
         const matchPage = (result.parentElement as HTMLLinkElement).href
