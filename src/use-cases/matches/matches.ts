@@ -1,5 +1,5 @@
 import { MatchRepository } from '../../domain/match/match_repository.js'
-import { MatchesOutput } from './types.js';
+import { MatchesOutput } from './types.js'
 
 export class Matches {
 

@@ -4,13 +4,13 @@
   "description": "The Inter API",
   "main": "server.cjs",
   "type": "module",
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
-  },
   "scripts": {
     "build": "tsup src",
     "start": "node dist/server.cjs",
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "seed_years": "tsx prisma/seed_years.ts",
+    "seed_leagues": "tsx prisma/seed_leagues.ts",
+    "seed_results": "tsx prisma/seed_results.ts"
   },
   "author": "João Job",
   "license": "MIT",

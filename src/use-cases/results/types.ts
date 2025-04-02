@@ -8,3 +8,9 @@ export type ResultsOutput = {
   interGoals: number
   opponentGoals: number
 }
+
+export type ResultsParams = {
+  year: string
+  month: string
+  league: string
+}

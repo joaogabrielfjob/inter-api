@@ -1,6 +1,5 @@
 model Result {
-  id Int @id @default(autoincrement())
-
+  id            Int      @id @default(autoincrement())
   identifier    String   @unique
   opponent      String
   location      String
