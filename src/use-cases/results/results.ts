@@ -5,8 +5,8 @@ export class Results {
 
   constructor(private readonly repo: ResultRepository) { }
 
-  async do({ year, month, league}: ResultsParams): Promise<ResultsOutput[]> {
-    const results = await this.repo.filtered(year, month, league)
+  async do({ year, month, league, opponent }: ResultsParams): Promise<ResultsOutput[]> {
+    const results = await this.repo.filtered(year, month, league, opponent)
 
     return results
   }

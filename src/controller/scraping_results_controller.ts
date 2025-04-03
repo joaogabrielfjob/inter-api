@@ -2,12 +2,15 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { prisma } from '../utils/prisma_client.js'
 import { ScrapingResults } from '../use-cases/scraping-results/scraping_results.js'
 import { IResultRepository } from '../infra/repository/result_repository.js'
+import { IOpponentRepository } from '../infra/repository/opponent_repository.js'
 
 export class ScrapingResultsController {
 
   handle = async (_: FastifyRequest, reply: FastifyReply) => {
-    const repository = new IResultRepository(prisma)
-    const scrapingResults = new ScrapingResults(repository)
+    const resultRepo = new IResultRepository(prisma)
+    const opponentRepo = new IOpponentRepository(prisma)
+    
+    const scrapingResults = new ScrapingResults(resultRepo, opponentRepo)
 
     try {
       const output = await scrapingResults.do()

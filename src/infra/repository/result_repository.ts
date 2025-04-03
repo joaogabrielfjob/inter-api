@@ -21,9 +21,9 @@ export class IResultRepository implements ResultRepository {
     }
   }
 
-  async filtered(year: string, month: string, league: string): Promise<Result[]> {
+  async filtered(year: string, month: string, league: string, opponent: string): Promise<Result[]> {
     try {
-      const where = this.buildFilteredWhere(year, month, league)
+      const where = this.buildFilteredWhere(year, month, league, opponent)
       const query = Prisma.sql`SELECT * FROM result ${where} ORDER BY date desc`
 
       const result = await this.prisma.$queryRaw<Result[]>(query)
@@ -36,18 +36,21 @@ export class IResultRepository implements ResultRepository {
     }
   }
 
-  private buildFilteredWhere = (year: string, month: string, league: string) => {
+  private buildFilteredWhere = (year: string, month: string, league: string, opponent: string) => {
     const conditions: Prisma.Sql[] = []
 
     const byYear = Prisma.sql`EXTRACT(YEAR FROM date) = ${year}::integer`
     const byMonth = Prisma.sql`EXTRACT(MONTH FROM date) = ${month}::integer`
     const byLeague = Prisma.sql`UPPER(UNACCENT(league)) = UPPER(UNACCENT(${league}))`
+    const byOpponent = Prisma.sql`UPPER(UNACCENT(opponent)) = UPPER(UNACCENT(${opponent}))`
 
     if (year) conditions.push(byYear)
 
     if (month) conditions.push(byMonth)
 
     if (league) conditions.push(byLeague)
+
+    if (opponent) conditions.push(byOpponent)
 
     return conditions.length ? Prisma.sql`WHERE ${Prisma.join(conditions, ' AND ')}` : Prisma.empty
   }

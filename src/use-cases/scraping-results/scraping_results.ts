@@ -1,13 +1,17 @@
 import puppeteer from 'puppeteer'
-import { Match } from '../../domain/match/match_entity.js'
 import { nanoid } from '../../utils/nanoid.js'
 import { ResultRepository } from '../../domain/result/result_repository.js'
 import { Scraped } from './types.js'
 import { Result } from '../../domain/result/result_entity.js'
+import { Opponent } from '../../domain/opponent/opponent.js'
+import { OpponentRepository } from '../../domain/opponent/opponent_repository.js'
 
 export class ScrapingResults {
 
-  constructor(private readonly repo: ResultRepository) { }
+  constructor(
+    private readonly resultRepo: ResultRepository,
+    private readonly opponentRepo: OpponentRepository
+  ) { }
 
   async do(): Promise<number> {
     const browser = await puppeteer.launch()
@@ -72,6 +76,7 @@ export class ScrapingResults {
 
   async persist(scraped: Scraped[]) {
     const results: Result[] = []
+    const opponents: Opponent[] = []
 
     for (const input of scraped) {
       const identifier = nanoid()
@@ -87,10 +92,16 @@ export class ScrapingResults {
         opponentGoals: Number(input.opponentGoals)
       }
 
+      const opponent: Opponent = {
+        name: input.opponent
+      }
+
       results.push(result)
+      opponents.push(opponent)
     }
 
-    const output = await this.repo.createMany(results)
+    const output = await this.resultRepo.createMany(results)
+    await this.opponentRepo.createMany(Array.from(opponents.values()))
 
     return output ?? 0
   }

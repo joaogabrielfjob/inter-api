@@ -1,0 +1,6 @@
+model Opponent {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  @@map("opponent")
+}

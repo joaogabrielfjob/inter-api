@@ -13,4 +13,5 @@ export type ResultsParams = {
   year: string
   month: string
   league: string
+  opponent: string
 }
