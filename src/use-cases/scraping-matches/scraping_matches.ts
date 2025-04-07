@@ -11,7 +11,7 @@ export class ScrapingMatches {
   async do(): Promise<number> {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
-    const url =  process.env.MATCHES_URL!
+    const url = "https://www.placardefutebol.com.br/time/internacional/proximos-jogos"
 
     await page.goto(url)
 

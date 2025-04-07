@@ -16,7 +16,7 @@ export class ScrapingResults {
   async do(): Promise<number> {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
-    const url =  process.env.RESULTS_URL!
+    const url = "https://www.placardefutebol.com.br/time/internacional/ultimos-jogos"
 
     await page.goto(url)
 
