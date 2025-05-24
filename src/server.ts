@@ -6,7 +6,7 @@ import { resultRoutes } from './infra/http/result_routes.js'
 
 const server = fastify()
 
-server.register(cors, { origin: process.env.WEB_URL })
+server.register(cors, { origin: process.env.CORS_ORIGIN })
 
 server.register(matchRoutes)
 server.register(resultRoutes)

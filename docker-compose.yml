@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 200M
+    networks:
+      - backend
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+
+  api:
+    image: inter_api:1.0
+    deploy:
+      resources:
+        limits:
+          cpus: "0.7"
+          memory: 600M
+    networks:
+      - backend
+    environment:
+      PORT: ${PORT}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+      DATABASE_URL: ${DATABASE_URL}
+    ports:
+      - 5002:5002
+    depends_on:
+      - db
+    command: sh -c "npx prisma migrate deploy && node server.cjs"
+
+networks:
+  backend:
+
+volumes:
+  db_data:
