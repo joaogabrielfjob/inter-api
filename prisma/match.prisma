@@ -8,4 +8,5 @@ model Match {
   emblem     String
 
   @@map("match")
+  @@schema("match")
 }
