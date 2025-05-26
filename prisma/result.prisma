@@ -11,4 +11,5 @@ model Result {
 
   @@unique([opponent, date])
   @@map("result")
+  @@schema("result")
 }

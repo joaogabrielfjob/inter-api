@@ -3,4 +3,5 @@ model Opponent {
   name String @unique
 
   @@map("opponent")
+  @@schema("opponent")
 }
