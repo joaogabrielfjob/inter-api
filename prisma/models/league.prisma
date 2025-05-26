@@ -3,5 +3,4 @@ model League {
   name String @unique
 
   @@map("league")
-  @@schema("league")
 }

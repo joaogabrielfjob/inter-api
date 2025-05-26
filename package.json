@@ -4,6 +4,9 @@
   "description": "The Inter API",
   "main": "server.cjs",
   "type": "module",
+  "prisma": {
+    "schema": "./prisma"
+  },
   "scripts": {
     "build": "tsup src",
     "start": "node dist/server.cjs",
@@ -26,6 +29,7 @@
   "dependencies": {
     "@fastify/cors": "^11.0.1",
     "@prisma/client": "^6.5.0",
+    "axios": "^1.9.0",
     "fastify": "^5.2.2",
     "nanoid": "^5.1.5",
     "puppeteer": "^24.4.0",
