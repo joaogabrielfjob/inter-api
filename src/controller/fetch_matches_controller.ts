@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { prisma } from '../utils/prisma_client.js'
 import { IMatchRepository } from '../infra/repository/match_repository.js'
-import { FetchMatches } from '../use-cases/fetch_matches/fetch_matches.js'
+import { FetchMatches } from '../use_cases/fetch_matches/fetch_matches.js'
 
 export class FetchMatchesController {
 

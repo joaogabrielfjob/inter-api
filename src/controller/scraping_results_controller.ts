@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { prisma } from '../utils/prisma_client.js'
-import { FetchResults } from '../use-cases/fetch_results/fetch_results.js'
+import { FetchResults } from '../use_cases/fetch_results/fetch_results.js'
 import { IResultRepository } from '../infra/repository/result_repository.js'
 import { IOpponentRepository } from '../infra/repository/opponent_repository.js'
 import { ILeagueRepository } from '../infra/repository/league_repository.js'

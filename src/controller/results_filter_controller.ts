@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { prisma } from '../utils/prisma_client.js'
 import { ILeagueRepository } from '../infra/repository/league_repository.js'
-import { ResultsFilter } from '../use-cases/results_filter/results_filter.js'
+import { ResultsFilter } from '../use_cases/results_filter/results_filter.js'
 import { IOpponentRepository } from '../infra/repository/opponent_repository.js'
 
 export class ResultsFilterController {
