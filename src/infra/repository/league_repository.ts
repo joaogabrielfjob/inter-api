@@ -17,4 +17,19 @@ export class ILeagueRepository implements LeagueRepository {
       return []
     }
   }
+
+  async createMany(leagues: League[]): Promise<number | nil> {
+    try {
+      const result = await this.prisma.league.createMany({
+        data: leagues,
+        skipDuplicates: true
+      })
+
+      return result.count
+    } catch(exception) {
+      console.error('ILeagueRepository - createMany - Exception', exception)
+
+      return null
+    }
+  }
 }
