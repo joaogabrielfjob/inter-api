@@ -7,7 +7,7 @@ COPY . /build
 RUN rm -rf dist node_modules
 RUN npm i
 RUN npm run build
-RUN npx prisma generate
+RUN npx prisma generate --schema=./prisma/main.prisma
 
 FROM node:22.16.0-alpine
 

@@ -5,7 +5,7 @@
   "main": "server.cjs",
   "type": "module",
   "prisma": {
-    "schema": "./prisma"
+    "schema": "./prisma/main.prisma"
   },
   "scripts": {
     "build": "tsup src",

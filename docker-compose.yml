@@ -28,11 +28,12 @@ services:
       PORT: ${PORT}
       CORS_ORIGIN: ${CORS_ORIGIN}
       DATABASE_URL: ${DATABASE_URL}
+      RAPIDAPI_KEY: ${RAPIDAPI_KEY}
     ports:
       - 5002:5002
     depends_on:
       - db
-    command: sh -c "npx prisma migrate deploy && node server.cjs"
+    command: sh -c "npx prisma migrate deploy --schema=./prisma/main.prisma && node server.cjs"
 
 networks:
   backend:
