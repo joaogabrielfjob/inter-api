@@ -1,6 +1,0 @@
-model League {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-
-  @@map("league")
-}

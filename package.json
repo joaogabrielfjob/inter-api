@@ -4,9 +4,6 @@
   "description": "The Inter API",
   "main": "server.cjs",
   "type": "module",
-  "prisma": {
-    "schema": "./prisma/main.prisma"
-  },
   "scripts": {
     "build": "tsup src",
     "start": "node dist/server.cjs",

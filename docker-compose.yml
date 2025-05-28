@@ -33,7 +33,7 @@ services:
       - 5002:5002
     depends_on:
       - db
-    command: sh -c "npx prisma migrate deploy --schema=./prisma/main.prisma && node server.cjs"
+    command: sh -c "npx prisma migrate deploy && node server.cjs"
 
 networks:
   backend:
