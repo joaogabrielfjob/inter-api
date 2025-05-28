@@ -26,7 +26,7 @@ services:
       - backend
     environment:
       PORT: ${PORT}
-      CORS_ORIGIN: ${CORS_ORIGIN}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
       DATABASE_URL: ${DATABASE_URL}
       RAPIDAPI_KEY: ${RAPIDAPI_KEY}
     ports:
